@@ -4,8 +4,8 @@ exports.up = async function(knex) {
       table.text("make").notNull().unique()
       table.text("model").notNull().unique()
       table.integer("year")
-      table.boolean("title status clean").defaultTo(false)
-      table.text("transmission type").notNull().unique()
+      table.boolean("titleStatusClean").defaultTo(false)
+      table.text("transmissionType")
     })
   }
 
