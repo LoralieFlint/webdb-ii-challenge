@@ -34,4 +34,26 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.put("/:VIN", async (req, res, next) => {
+  try {
+    const cars = await db("cars").update(req.body)
+      .where({ VIN: req.params.VIN })
+    res.json(cars);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/:VIN", async (req, res, next) => {
+  try {
+    const cars = await db("cars").delete(req.params)
+      .where({ VIN: req.params.VIN })
+    res.json({ removed: deleted }, cars);
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+
 module.exports = router;
